@@ -34,6 +34,12 @@ int board_init(void)
 
 #ifdef CONFIG_SPL_BUILD
 
+static struct module_pin_mux uart0_pin_mux[] = {
+	{ OFFSET(pincntl173), PULLUP_EN | MODE(0x01) },
+	{ OFFSET(pincntl174), PULLUP_EN | MODE(0x01) },
+	{ -1 },
+};
+
 static struct module_pin_mux mmc_pin_mux[] = {
 	{ OFFSET(pincntl157), PULLDOWN_EN | PULLUDDIS | MODE(0x0) },
 	{ OFFSET(pincntl158), PULLDOWN_EN | PULLUDEN | MODE(0x0) },
@@ -211,7 +217,10 @@ static const struct emif_regs ddr3_emif1_regs = {
 	.emif_ddr_phy_ctlr_1	= EMIF_PHYCFG,
 };
 
-void set_uart_mux_conf(void) {}
+void set_uart_mux_conf(void)
+{
+	configure_module_pin_mux(uart0_pin_mux);
+}
 
 void set_mux_conf_regs(void)
 {
