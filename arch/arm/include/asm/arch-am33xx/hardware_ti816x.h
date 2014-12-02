@@ -31,6 +31,7 @@
 
 /* Control Module Base Address */
 #define CTRL_BASE		0x48140000
+#define CTRL_DEVICE_BASE	(CTRL_BASE + 0x0600)
 
 /* PRCM Base Address */
 #define PRCM_BASE		0x48180000
@@ -54,6 +55,9 @@
 #define DDRPHY_1_CONFIG_BASE	0x4819A000
 #define DDRPHY_CONFIG_BASE	((emif == 0) ? \
 	DDRPHY_0_CONFIG_BASE : DDRPHY_1_CONFIG_BASE)
+
+/* CPSW Config space */
+#define CPSW_MDIO_BASE                  0x4A100800
 
 /* RTC base address */
 #define RTC_BASE		0x480C0000
